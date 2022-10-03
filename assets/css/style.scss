@@ -1,0 +1,45 @@
+---
+---
+// Ghetto reset
+*{
+  margin: 0;
+  padding: 0;
+}
+
+// Variables
+$blue: #69b3df;
+$black: #333333;
+$white: #FFF;
+$gray: #4a4a4a;
+
+$sans: 'CalibreWeb', 'Helvetica Neue', Sans-Serif;
+
+@import "type/_fonts";
+@import "helpers/_prefixes";
+@import "grid/_breakpoints";
+@import "grid/_grid";
+@import "ui/_preloader";
+@import "ui/_skyline";
+@import "ui/_intro";
+@import "ui/_footer";
+@import "ui/_flag";
+@import "type/_headings";
+@import "ui/_btn";
+@import "ui/_no-webgl";
+
+html{
+  background-color: $black;
+  font-family: $sans;
+  @include breakpoint(retina){
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+html, body{
+  overflow-x: hidden;
+}
+
+.hide{
+  display: none;
+}

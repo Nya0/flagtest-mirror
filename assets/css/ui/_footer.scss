@@ -1,0 +1,45 @@
+.footer{
+  padding: 30px 0;
+  color: #A5A5A5;
+  font-size: 14px;
+  background-color: $black;
+}
+
+.footer p{
+  margin: 0;
+  margin-bottom: 17px;
+  margin-right: 20px;
+  line-height: 17px;
+}
+
+.footer a{
+  color: #FFF;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.footer-heading{
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.footer-flagpost-logo{
+  margin-top: 35px;
+  display: block;
+}
+
+.footer-elsewhere{
+  @include breakpoint(mobile){
+    margin-top: 30px;
+  }
+}
+
+@include breakpoint(mobile){
+  .footer-elsewhere-flagdesign,
+  .footer-elsewhere-flagpost{
+    width: 50% !important;
+    float: left !important;
+  }
+}

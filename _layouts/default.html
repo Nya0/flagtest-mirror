@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js">
+    {% include head.html %}
+    <body>
+      <div class="preloader js-preloader"></div>
+      <div class="skyline js-skyline">
+        <div class="intro js-view" data-view="Intro">
+          <h3 class="lined-heading">FLAGTEST.NZ</h3>
+          <p class="intro-text">See how a flag design works in a raging <span class="desktop-break"></span>New Zealand southerly or a gentle nor&#8217;wester...</p>
+          <div class="intro-actions">
+            <button class="btn skyline-upload js-view" data-view="Upload">
+              Upload &amp; test a flag
+              <input type="file" class="js-upload skyline-upload-input" />
+            </button>
+            <button class="btn js-random">View a random flag</button>
+            <button class="btn js-enter_flag_id">Enter flag ID</button>
+          </div>
+          <p class="intro-submit">
+            Looking for a design to test? <span class="break-mobile"></span><a href="http://flagpost.nz" target="_blank">Visit flagpost.nz »</a></p>
+        </div>
+      </div>
+      {{ content }}
+      {% include footer.html %}
+      <script src="/assets/js/vendor/three50dev2.js"></script>
+      <script src="/assets/js/vendor/flag-physics.js"></script>
+      <script src="/assets/js/flag3d.js"></script>
+      <script type="x-shader/x-fragment" id="fragmentShaderDepth">
+  			uniform sampler2D texture;
+  			varying vec2 vUV;
+  			vec4 pack_depth( const in float depth ) {
+  				const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );
+  				const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );
+  				vec4 res = fract( depth * bit_shift );
+  				res -= res.xxyz * bit_mask;
+  				return res;
+  			}
+  			void main() {
+  				vec4 pixel = texture2D( texture, vUV );
+  				if ( pixel.a < 0.5 ) discard;
+  				gl_FragData[ 0 ] = pack_depth( gl_FragCoord.z );
+  			}
+  		</script>
+  		<script type="x-shader/x-vertex" id="vertexShaderDepth">
+  			varying vec2 vUV;
+  			void main() {
+  				vUV = 0.75 * uv;
+  				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+  				gl_Position = projectionMatrix * mvPosition;
+  			}
+  		</script>
+      <script src="/assets/js/app.js"></script>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-33585420-8', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+      <div class="no_webgl">
+        <div class="grid-container">
+          <div class="no_webgl-message">
+            <h3 class="no_webgl-heading">FLAGTEST.NZ</h3>
+            <p>Sorry, this website uses WebGL which your browser doesn't support. Please try using a recent version of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a href="http://nightly.webkit.org/">Webkit Nightly</a> (Mac).<p>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

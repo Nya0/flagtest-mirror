@@ -1,0 +1,58 @@
+.intro{
+  width: 940px;
+  height: 380px;
+  background-color: rgba(255,255,255,.1);
+  position: absolute;
+  left: calc(50% - 470px);
+  top: calc(50% - 170px);
+  color: $white;
+  padding: 32px;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+  @include breakpoint(tablet){
+    width: auto;
+    left: 40px;
+    right: 40px;
+    height: auto;
+  }
+  @include breakpoint(mobile){
+    width: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: auto;
+    position: static;
+  }
+}
+
+.intro-text{
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin-bottom: 70px;
+  @include breakpoint(mobile){
+    font-size: 30px;
+    letter-spacing: 0;
+  }
+}
+
+.intro-submit{
+  margin-top: 20px;
+  line-height: 20px;
+  a{
+    color: $white;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+.intro-actions{
+  .btn{
+    @include breakpoint(mobile){
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}

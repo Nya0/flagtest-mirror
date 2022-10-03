@@ -1,0 +1,42 @@
+.skyline{
+  position: relative;
+  height: 0;
+  padding-bottom: 50%;
+  background-color: $blue;
+  background-image: url('/assets/images/sky-bg.jpg');
+  background-size: cover;
+  // @include animation('sky-transision 8s linear forwards infinite');
+  @include breakpoint(mobile){
+    padding-bottom: 140%;
+  }
+  @include breakpoint(tablet){
+    padding-bottom: 70%;
+  }
+}
+
+.skyline-upload{
+  position: relative;
+  display: none !important;
+  html.platform-chrome &{
+    display: inline-block !important;
+  }
+}
+
+.skyline-upload-input{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+
+@include keyframes(sky-transision){
+  0% {
+    background-position: -100px 0px;
+  }
+  100%{
+    background-position: 0px 0px;
+  }
+}

@@ -1,0 +1,22 @@
+.btn{
+  display: inline-block;
+  text-transform: uppercase;
+  border: 1px solid rgba($white, .5);
+  -webkit-font-smoothing: antialiased;
+  font-family: $sans;
+  background-color: transparent;
+  font-weight: 600;
+  color: $white;
+  padding: 10px 20px 12px;
+  vertical-align: middle;
+  font-size: 15px;
+  line-height: 12px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  outline: none;
+  &:hover{
+    background-color: $white;
+    color: $blue;
+    cursor: pointer;
+  }
+}
